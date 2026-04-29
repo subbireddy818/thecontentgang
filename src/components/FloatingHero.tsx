@@ -5,18 +5,18 @@ import Link from "next/link";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 // Platform Icon Component with repulsion logic
-const FloatingIcon = ({ logo, color, initialX, initialY }: any) => {
+const FloatingIcon = ({ logo, color, initialX, initialY }: { logo: string; color: string; initialX: number; initialY: number }) => {
   const x = useSpring(initialX, { stiffness: 50, damping: 20 });
   const y = useSpring(initialY, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const dx = e.clientX - x.get();
-      const dy = e.clientY - y.get();
+      const dx = e.clientX - (x.get() as number);
+      const dy = e.clientY - (y.get() as number);
       const distance = Math.sqrt(dx * dx + dy * dy);
       const radius = 250; // Repulsion radius
 
-      if (distance < radius) {
+      if (distance < radius && distance > 0) {
         const force = (radius - distance) / radius;
         const pushX = (dx / distance) * -120 * force;
         const pushY = (dy / distance) * -120 * force;
