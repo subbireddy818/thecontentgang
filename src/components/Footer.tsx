@@ -1,0 +1,175 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+
+export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <>
+      <footer className="bg-[#050505] text-white pt-24 pb-12 px-6 border-t border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
+            
+            {/* Column 1: Brand */}
+            <div className="space-y-6">
+              <Link href="/" className="inline-block">
+                <img 
+                  src="/Logo-e1765773867927.png" 
+                  alt="The Content Gang Logo" 
+                  className="h-14 md:h-16 w-auto"
+                />
+              </Link>
+              <p className="text-zinc-500 text-[15px] leading-relaxed max-w-[280px]">
+                Engineering cinematic content systems that turn founders into category authorities and social media into a client-generating machine.
+              </p>
+              <p className="text-zinc-500 text-[15px] leading-relaxed max-w-[280px]">
+                Founded in Hyderabad, serving visionary brands Pan-India with ROI-first marketing.
+              </p>
+            </div>
+
+            {/* Column 2: Newsletter */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h4 className="text-sm font-black uppercase tracking-[0.2em] text-[var(--color-accent)]">Newsletter</h4>
+                <p className="text-zinc-300 text-[15px] font-medium leading-relaxed">
+                  Get the latest insights on content strategy and performance marketing delivered to your inbox.
+                </p>
+              </div>
+              <div className="relative group">
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  className="w-full bg-white text-zinc-900 px-6 py-4 rounded-lg focus:outline-none font-medium placeholder:text-zinc-400"
+                />
+                <button className="absolute right-0 top-0 h-full aspect-square bg-[var(--color-accent)] rounded-r-lg flex items-center justify-center hover:brightness-110 transition-all">
+                  <span className="material-symbols-outlined text-white">send</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Column 3: Contact & Socials */}
+            <div className="space-y-8 lg:pl-12">
+              {/* Location Link */}
+              <a 
+                href="https://www.bing.com/maps/search?q=Hyderabad%2C+Telangana%2C+IN&cp=17.509075%7E78.434578&lvl=10.3&style=r" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-start gap-5 group cursor-pointer"
+              >
+                <div className="mt-1 w-12 h-12 flex items-center justify-center shrink-0 bg-white/5 rounded-xl group-hover:bg-[var(--color-accent-dim)] transition-colors border border-white/5 group-hover:border-[var(--color-accent)]/20">
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    className="w-6 h-6 fill-[var(--color-accent)] group-hover:scale-110 transition-transform"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1 group-hover:text-white transition-colors">Headquarters</p>
+                  <p className="text-zinc-200 text-[15px] font-bold leading-tight group-hover:text-[var(--color-accent)] transition-colors">Hyderabad, Telangana, India</p>
+                </div>
+              </a>
+
+              {/* Phone Info */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-12 h-12 flex items-center justify-center shrink-0 bg-white/5 rounded-xl border border-white/5">
+                  <span className="material-symbols-outlined text-zinc-400 text-2xl group-hover:text-white transition-colors">call</span>
+                </div>
+                <div>
+                  <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Direct Line</p>
+                  <p className="text-zinc-200 text-[15px] font-bold leading-tight">+91 9381441618</p>
+                </div>
+              </div>
+
+              {/* Social Icons - Original Colors Guaranteed */}
+              <div className="pt-6 space-y-4">
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em]">Connect with us</p>
+                <div className="flex gap-4">
+                  {/* WhatsApp */}
+                  <a 
+                    href="https://wa.me/919381441618" 
+                    target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all group border border-white/5" 
+                    title="WhatsApp"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 fill-[#25D366] transition-transform group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                  </a>
+
+                  {/* Instagram */}
+                  <a 
+                    href="https://www.instagram.com/the.contentgang?igsh=Y3ZwMTZvdHM2N2hv" 
+                    target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all group border border-white/5" 
+                    title="Instagram"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 fill-[#E4405F] transition-transform group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.336 1.079 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.079-1.336 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.336-1.079-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.58.016 4.85.074 1.17.054 1.8.249 2.223.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36.1.414 2.223.058 1.27.074 1.647.074 4.851s-.016 3.58-.074 4.85c-.054 1.17-.249 1.8-.415 2.223-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-2.223.36-2.223.414-1.27.058-1.647.074-4.851.074s-3.58-.016-4.85-.074c-1.17-.054-1.8-.249-2.223-.415-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.052-.414-2.223-.058-1.27-.074-1.647-.074-4.851s.016-3.58.074-4.85c.054-1.17.249-1.8.415-2.223.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.052-.36 2.223-.414 1.27-.058 1.647-.074 4.851-.074zm0 3.663c-3.407 0-6.171 2.764-6.171 6.171 0 3.407 2.764 6.171 6.171 6.171s6.171-2.764 6.171-6.171c0-3.407-2.764-6.171-6.171-6.171zm0 10.183c-2.215 0-4.012-1.797-4.012-4.012s1.797-4.012 4.012-4.012 4.012 1.797 4.012 4.012-1.797 4.012-4.012 4.012zm6.406-11.845c0 .797-.646 1.443-1.443 1.443s-1.443-.646-1.443-1.443.646-1.443 1.443-1.443 1.443.646 1.443 1.443z"/>
+                    </svg>
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a 
+                    href="https://www.linkedin.com/company/thecontentgang" 
+                    target="_blank" rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all group border border-white/5" 
+                    title="LinkedIn"
+                  >
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 fill-[#0A66C2] transition-transform group-hover:scale-110" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-center items-center">
+            <p className="text-zinc-600 text-xs font-bold uppercase tracking-[0.2em]">
+              © {currentYear} THE CONTENT GANG. ALL RIGHTS RESERVED.
+            </p>
+          </div>
+        </div>
+
+        {/* ── Floating WhatsApp button - Premium Noir Redesign ────────────────────────── */}
+        <a
+          id="whatsapp-btn"
+          href="https://wa.me/919381441618"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="fixed bottom-28 md:bottom-10 right-6 z-[60] w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#121212]/80 backdrop-blur-xl border border-white/10 flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 group shadow-2xl overflow-hidden"
+        >
+          {/* Animated Glow Backdrop */}
+          <div className="absolute inset-0 bg-[#25D366]/5 group-hover:bg-[#25D366]/10 transition-colors" />
+          
+          <svg 
+            className="w-7 h-7 md:w-9 md:h-9 relative z-10 transition-all group-hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.6)]" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+
+        {/* ── Mobile sticky CTA ──────────────────────────────── */}
+        <div className="md:hidden fixed bottom-0 left-0 w-full z-[55] p-4 bg-zinc-950/90 backdrop-blur-xl border-t border-white/10">
+          <button
+            onClick={onOpenModal}
+            className="bg-[var(--color-accent)] w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold uppercase tracking-widest cursor-pointer text-white shadow-2xl active:scale-95 transition-transform"
+          >
+            <span className="material-symbols-outlined text-sm" aria-hidden="true">
+              calendar_today
+            </span>
+            BOOK AUDIT NOW
+          </button>
+        </div>
+      </footer>
+    </>
+  );
+}

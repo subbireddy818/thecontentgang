@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand Colors */
+  --color-accent: #FF3B1F;
+  --color-accent-dim: rgba(255, 59, 31, 0.15);
+  --color-bg: #0B0B0B;
+  --color-surface: #1A1A1A;
+  --color-surface-border: #262626;
+  --color-text: #E2E2E2;
+  --color-muted: #71717a;   /* zinc-500 */
+  --color-muted-dark: #3f3f46; /* zinc-700 */
+  --color-nav-bg: rgba(26, 26, 26, 0.8);
+
+  /* Typography */
+  --font-display: "Epilogue", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+::selection {
+  background-color: rgba(255, 59, 31, 0.3);
+}
+
+/* ── Reusable Components ───────────────────────────────────── */
+.noir-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.glass-header {
+  background-color: rgba(11, 11, 11, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.label-caps {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.accent-text {
+  color: var(--color-accent);
+}
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.65s ease both;
+}
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+
+/* ── Focus Styles ──────────────────────────────────────────── */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-accent) !important;
 }
