@@ -730,6 +730,7 @@ function SplashCursor({
     }
 
     function resizeCanvas() {
+      if (!canvas) return false;
       let width = scaleByPixelRatio(canvas.clientWidth);
       let height = scaleByPixelRatio(canvas.clientHeight);
       if (canvas.width !== width || canvas.height !== height) {
@@ -855,6 +856,7 @@ function SplashCursor({
     }
 
     function splat(x: number, y: number, dx: number, dy: number, color: { r: number; g: number; b: number }) {
+      if (!canvas) return;
       splatProgram.bind();
       gl.uniform1i(splatProgram.uniforms.uTarget, velocity.read.attach(0));
       gl.uniform1f(splatProgram.uniforms.aspectRatio, canvas.width / canvas.height);
@@ -871,12 +873,14 @@ function SplashCursor({
     }
 
     function correctRadius(radius: number) {
+      if (!canvas) return radius;
       let aspectRatio = canvas.width / canvas.height;
       if (aspectRatio > 1) radius *= aspectRatio;
       return radius;
     }
 
     function updatePointerDownData(pointer: Pointer, id: number, posX: number, posY: number) {
+      if (!canvas) return;
       pointer.id = id;
       pointer.down = true;
       pointer.moved = false;
@@ -890,6 +894,7 @@ function SplashCursor({
     }
 
     function updatePointerMoveData(pointer: Pointer, posX: number, posY: number, color: { r: number; g: number; b: number }) {
+      if (!canvas) return;
       pointer.prevTexcoordX = pointer.texcoordX;
       pointer.prevTexcoordY = pointer.texcoordY;
       pointer.texcoordX = posX / canvas.width;
@@ -905,12 +910,14 @@ function SplashCursor({
     }
 
     function correctDeltaX(delta: number) {
+      if (!canvas) return delta;
       let aspectRatio = canvas.width / canvas.height;
       if (aspectRatio < 1) delta *= aspectRatio;
       return delta;
     }
 
     function correctDeltaY(delta: number) {
+      if (!canvas) return delta;
       let aspectRatio = canvas.width / canvas.height;
       if (aspectRatio > 1) delta /= aspectRatio;
       return delta;
