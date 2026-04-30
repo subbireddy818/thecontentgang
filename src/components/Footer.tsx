@@ -1,5 +1,10 @@
 "use client";
 
+import React from "react";
+import Link from "next/link";
+
+export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
+  const currentYear = new Date().getFullYear();
   const [email, setEmail] = React.useState("");
   const [status, setStatus] = React.useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -66,27 +71,37 @@
                   Get the latest insights on content strategy and performance marketing delivered to your inbox.
                 </p>
               </div>
-              <form onSubmit={handleNewsletterSubmit} className="relative group">
-                <input 
-                  type="email" 
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={status === "success" ? "Subscribed!" : "Your Email"} 
-                  className={`w-full bg-white text-zinc-900 px-6 py-4 rounded-lg focus:outline-none font-medium placeholder:text-zinc-400 transition-all ${status === "success" ? "border-2 border-green-500" : ""}`}
-                  disabled={status === "submitting" || status === "success"}
-                />
-                <button 
-                  type="submit"
-                  disabled={status === "submitting" || status === "success"}
-                  className="absolute right-0 top-0 h-full aspect-square bg-[var(--color-accent)] rounded-r-lg flex items-center justify-center hover:brightness-110 transition-all disabled:opacity-50"
-                >
-                  <span className="material-symbols-outlined text-white">
-                    {status === "submitting" ? "hourglass_empty" : status === "success" ? "check" : "send"}
-                  </span>
-                </button>
-              </form>
-              {status === "error" && <p className="text-red-500 text-xs font-bold">Something went wrong. Try again.</p>}
+              {status === "success" ? (
+                <div className="bg-green-500/10 border border-green-500/20 p-6 rounded-lg animate-in fade-in zoom-in duration-300">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="material-symbols-outlined text-green-500">check_circle</span>
+                    <p className="text-white font-bold">Successfully Subscribed!</p>
+                  </div>
+                  <p className="text-zinc-400 text-sm">Welcome to the inner circle. Keep an eye on your inbox.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="relative group">
+                  <input 
+                    type="email" 
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your Email" 
+                    className="w-full bg-white text-zinc-900 px-6 py-4 rounded-lg focus:outline-none font-medium placeholder:text-zinc-400 transition-all"
+                    disabled={status === "submitting"}
+                  />
+                  <button 
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="absolute right-0 top-0 h-full aspect-square bg-[var(--color-accent)] rounded-r-lg flex items-center justify-center hover:brightness-110 transition-all disabled:opacity-50"
+                  >
+                    <span className="material-symbols-outlined text-white">
+                      {status === "submitting" ? "hourglass_empty" : "send"}
+                    </span>
+                  </button>
+                </form>
+              )}
+              {status === "error" && <p className="text-red-500 text-xs font-bold mt-2">Something went wrong. Try again.</p>}
             </div>
 
             {/* Column 3: Contact & Socials */}
