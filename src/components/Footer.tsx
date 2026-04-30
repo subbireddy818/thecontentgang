@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 
 export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
   const currentYear = new Date().getFullYear();
@@ -14,27 +15,29 @@ export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
     setStatus("submitting");
     
     try {
-      // Using a reliable public endpoint (Web3Forms) as a default functional way
-      // User can replace this with their own API or EmailJS
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "0e0e0e0e-0e0e-0e0e-0e0e-0e0e0e0e0e0e", // Placeholder/Demo key
-          email: email,
-          subject: "New Newsletter Subscription",
-          from_name: "The Content Gang Website"
-        }),
-      });
+      // Using the same EmailJS credentials as the other forms
+      const SERVICE_ID = "service_9t5kfbj"; 
+      const TEMPLATE_ID = "template_2l73jtm";
+      const PUBLIC_KEY = "IoK7NADHy4nUF5IvP";
 
-      if (response.ok) {
-        setStatus("success");
-        setEmail("");
-        setTimeout(() => setStatus("idle"), 5000);
-      } else {
-        throw new Error();
-      }
+      const templateParams = {
+        user_email: email,
+        from_name: "Newsletter Subscriber",
+        message: "New newsletter subscription request."
+      };
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+
+      setStatus("success");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
+      console.error("Newsletter Error:", error);
       setStatus("error");
       setTimeout(() => setStatus("idle"), 5000);
     }
