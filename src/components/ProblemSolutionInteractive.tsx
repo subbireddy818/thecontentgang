@@ -49,7 +49,7 @@ export default function ProblemSolutionInteractive() {
         
         {/* Compact Header */}
         <div className="mb-14 text-center">
-          <h2 className="text-3xl md:text-5xl font-black leading-tight tracking-tighter" style={{ fontFamily: 'var(--font-epilogue)' }}>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter" style={{ fontFamily: 'var(--font-epilogue)' }}>
             <span className="text-white">Your Marketing Isn't Working. </span>
             <span className="text-[var(--color-accent)]">Here's What We Do Differently.</span>
           </h2>

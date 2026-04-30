@@ -110,49 +110,29 @@ export default function TrackRecord() {
           {stats.map((item, idx) => (
             <div 
               key={idx} 
-              className="group relative bg-[#111111] border border-white/5 p-10 rounded-[2.5rem] overflow-hidden transition-all duration-700 hover:border-[var(--color-accent)]/40 hover:-translate-y-2 shadow-2xl"
+              className="group relative bg-[#111111]/80 backdrop-blur-md border border-white/5 p-6 rounded-2xl transition-all duration-500 hover:bg-[#161616] hover:border-[var(--color-accent)]/30 hover:shadow-[0_0_30px_rgba(255,59,31,0.05)] flex flex-col justify-between"
             >
-              <div className="relative z-10 space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-[var(--color-accent)]/10 flex items-center justify-center border border-[var(--color-accent)]/20 group-hover:bg-[var(--color-accent)] transition-all duration-500 shadow-[0_0_20px_rgba(255,59,31,0.1)] group-hover:shadow-[0_0_30px_rgba(255,59,31,0.3)]">
-                  <span className="material-symbols-outlined text-[var(--color-accent)] group-hover:text-white transition-colors text-2xl fill-1">
-                    {item.icon}
-                  </span>
+              <div className="flex items-start justify-between mb-8">
+                <span className="material-symbols-outlined text-zinc-600 group-hover:text-[var(--color-accent)] transition-colors text-2xl font-light">
+                  {item.icon}
+                </span>
+                <span className="text-zinc-700 text-[10px] font-mono font-bold tracking-widest">0{idx + 1}</span>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="text-3xl md:text-4xl font-black text-white tracking-tighter" style={{ fontFamily: 'var(--font-epilogue)' }}>
+                  <Counter 
+                    target={item.target} 
+                    prefix={item.prefix} 
+                    suffix={item.suffix} 
+                    fallback={item.value} 
+                  />
                 </div>
-                
-                <div className="space-y-2">
-                  <div className="text-4xl md:text-5xl font-black text-[var(--color-accent)] tracking-tighter italic min-h-[1.2em]">
-                    <Counter 
-                      target={item.target} 
-                      prefix={item.prefix} 
-                      suffix={item.suffix} 
-                      fallback={item.value} 
-                    />
-                  </div>
-                  <div>
-                    <p className="text-white text-[12px] font-black uppercase tracking-widest">{item.label}</p>
-                    <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">{item.sub}</p>
-                  </div>
+                <div>
+                  <p className="text-[var(--color-accent)] text-[10px] font-black uppercase tracking-widest mb-1">{item.label}</p>
+                  <p className="text-zinc-500 text-xs font-medium">{item.sub}</p>
                 </div>
               </div>
-              {/* Wavy Design Background */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 300 425" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <style>
-                  {`
-                    @keyframes waveA {
-                      0%,100% { d: path("M0,370 C55,345 110,392 165,370 C220,348 270,388 300,370 L300,425 L0,425 Z"); }
-                      50%      { d: path("M0,370 C55,392 110,348 165,373 C220,396 270,352 300,374 L300,425 L0,425 Z"); }
-                    }
-                    @keyframes waveB {
-                      0%,100% { d: path("M0,384 C60,362 115,402 175,382 C235,362 278,396 300,382 L300,425 L0,425 Z"); }
-                      50%      { d: path("M0,384 C60,404 115,364 175,387 C235,410 278,372 300,388 L300,425 L0,425 Z"); }
-                    }
-                    .wa { animation: waveA 4s ease-in-out infinite; }
-                    .wb { animation: waveB 5.2s ease-in-out infinite; }
-                  `}
-                </style>
-                <path className="wa" fill="rgba(255,59,31,0.09)" d="M0,370 C55,345 110,392 165,370 C220,348 270,388 300,370 L300,425 L0,425 Z"/>
-                <path className="wb" fill="rgba(255,59,31,0.05)" style={{animationDelay: `${idx * 0.4}s`}} d="M0,384 C60,362 115,402 175,382 C235,362 278,396 300,382 L300,425 L0,425 Z"/>
-              </svg>
             </div>
           ))}
         </div>

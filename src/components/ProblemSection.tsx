@@ -27,7 +27,7 @@ export default function ProblemSection() {
         
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <span className="label-caps text-[var(--color-accent)] mb-4 block">THE CHALLENGE</span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight" style={{ fontFamily: 'var(--font-epilogue)' }}>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter" style={{ fontFamily: 'var(--font-epilogue)' }}>
             Why most businesses struggle to scale in the digital age
           </h2>
           <p className="text-zinc-400 text-lg">

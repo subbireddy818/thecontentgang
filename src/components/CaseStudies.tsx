@@ -36,7 +36,7 @@ export default function CaseStudies() {
     <section className="py-24 bg-[#0B0B0B]" id="work">
       <div className="px-6 mx-auto" style={{ maxWidth: "1280px" }}>
         <h2
-          className="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight text-center"
+          className="text-4xl md:text-6xl font-black text-white mb-12 tracking-tighter text-center"
           style={{ fontFamily: "var(--font-epilogue)" }}
         >
           Recent Success Stories

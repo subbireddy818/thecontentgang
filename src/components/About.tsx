@@ -26,7 +26,7 @@ export default function About() {
             </div>
             
             <h2 
-              className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight"
+              className="text-4xl md:text-6xl font-black text-white tracking-tighter"
               style={{ fontFamily: "var(--font-epilogue)" }}
             >
               We don't just <br className="hidden md:block" />

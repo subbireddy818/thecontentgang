@@ -64,7 +64,7 @@ export default function Testimonials() {
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="mb-20 text-center relative">
-          <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-tight" style={{ fontFamily: 'var(--font-epilogue)' }}>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter" style={{ fontFamily: 'var(--font-epilogue)' }}>
             Testimonials
           </h2>
           <div className="w-24 h-1.5 bg-[var(--color-accent)] mx-auto mt-6"></div>

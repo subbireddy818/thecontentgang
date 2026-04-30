@@ -30,7 +30,7 @@ export default function Services() {
     <section className="py-24 px-6 bg-[#0B0B0B]" id="services">
       <div className="mx-auto" style={{ maxWidth: "1280px" }}>
         <h2
-          className="text-4xl md:text-5xl font-black text-white text-center mb-16 tracking-tight"
+          className="text-4xl md:text-6xl font-black text-white text-center mb-16 tracking-tighter"
           style={{ fontFamily: "var(--font-epilogue)" }}
         >
           Our Services
@@ -56,7 +56,7 @@ export default function Services() {
               
               <a 
                 href={s.href}
-                className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] group/link"
+                className="hidden md:inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] group/link"
               >
                 Book Audit
                 <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
