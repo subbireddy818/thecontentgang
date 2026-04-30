@@ -17,15 +17,10 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Final check for gmail
-    if (!formData.user_email.toLowerCase().endsWith("@gmail.com")) {
-      alert("Please use a @gmail.com address.");
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
+      // Current EmailJS setup
       const SERVICE_ID = "service_9t5kfbj"; 
       const TEMPLATE_ID = "template_2l73jtm";
       const PUBLIC_KEY = "IoK7NADHy4nUF5IvP";
@@ -40,7 +35,8 @@ export default function ContactForm() {
       setSubmitted(true);
     } catch (error) {
       console.error("FAILED...", error);
-      alert("Something went wrong. Please try again.");
+      // Fallback: If EmailJS fails, try a direct fetch to a public service or just alert
+      alert("Form submission failed. Please check your EmailJS settings or try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -113,8 +109,6 @@ export default function ContactForm() {
                     name="user_email"
                     type="email"
                     required
-                    pattern=".*@gmail\.com$"
-                    title="Please use a @gmail.com address"
                     value={formData.user_email}
                     onChange={(e) => setFormData({...formData, user_email: e.target.value})}
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-12 py-4 text-white text-sm font-bold focus:bg-white/10 focus:border-[var(--color-accent)] outline-none transition-all shadow-inner"

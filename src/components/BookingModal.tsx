@@ -48,7 +48,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       }, 3000);
     } catch (error) {
       console.error("FAILED...", error);
-      alert("Something went wrong. Please try again.");
+      alert("Booking failed. Please ensure your EmailJS account is active and keys are correct.");
     } finally {
       setIsSubmitting(false);
     }

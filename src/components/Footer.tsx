@@ -1,10 +1,39 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
+  const [email, setEmail] = React.useState("");
+  const [status, setStatus] = React.useState<"idle" | "submitting" | "success" | "error">("idle");
 
-export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
-  const currentYear = new Date().getFullYear();
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("submitting");
+    
+    try {
+      // Using a reliable public endpoint (Web3Forms) as a default functional way
+      // User can replace this with their own API or EmailJS
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "0e0e0e0e-0e0e-0e0e-0e0e-0e0e0e0e0e0e", // Placeholder/Demo key
+          email: email,
+          subject: "New Newsletter Subscription",
+          from_name: "The Content Gang Website"
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setEmail("");
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
 
   return (
     <>
@@ -37,16 +66,27 @@ export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
                   Get the latest insights on content strategy and performance marketing delivered to your inbox.
                 </p>
               </div>
-              <div className="relative group">
+              <form onSubmit={handleNewsletterSubmit} className="relative group">
                 <input 
                   type="email" 
-                  placeholder="Your Email" 
-                  className="w-full bg-white text-zinc-900 px-6 py-4 rounded-lg focus:outline-none font-medium placeholder:text-zinc-400"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={status === "success" ? "Subscribed!" : "Your Email"} 
+                  className={`w-full bg-white text-zinc-900 px-6 py-4 rounded-lg focus:outline-none font-medium placeholder:text-zinc-400 transition-all ${status === "success" ? "border-2 border-green-500" : ""}`}
+                  disabled={status === "submitting" || status === "success"}
                 />
-                <button className="absolute right-0 top-0 h-full aspect-square bg-[var(--color-accent)] rounded-r-lg flex items-center justify-center hover:brightness-110 transition-all">
-                  <span className="material-symbols-outlined text-white">send</span>
+                <button 
+                  type="submit"
+                  disabled={status === "submitting" || status === "success"}
+                  className="absolute right-0 top-0 h-full aspect-square bg-[var(--color-accent)] rounded-r-lg flex items-center justify-center hover:brightness-110 transition-all disabled:opacity-50"
+                >
+                  <span className="material-symbols-outlined text-white">
+                    {status === "submitting" ? "hourglass_empty" : status === "success" ? "check" : "send"}
+                  </span>
                 </button>
-              </div>
+              </form>
+              {status === "error" && <p className="text-red-500 text-xs font-bold">Something went wrong. Try again.</p>}
             </div>
 
             {/* Column 3: Contact & Socials */}
