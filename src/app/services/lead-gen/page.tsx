@@ -193,11 +193,13 @@ export default function LeadGenPage() {
             </div>
             <div className="space-y-3">
               <label className="text-zinc-500 text-[10px] font-black uppercase tracking-widest ml-4">Monthly Revenue Target</label>
-              <select className="w-full bg-[#0B0B0B] border-white/5 rounded-2xl focus:border-[var(--color-accent)] focus:ring-0 text-white p-5 font-bold transition-all appearance-none cursor-pointer">
-                <option>$10k - $50k</option>
-                <option>$50k - $200k</option>
-                <option>$200k+</option>
-              </select>
+              <input 
+                name="revenue" 
+                id="revenue"
+                type="text"
+                placeholder="e.g. $10k - $50k"
+                className="w-full bg-[#0B0B0B] border-white/5 rounded-2xl focus:border-[var(--color-accent)] focus:ring-0 text-white p-5 font-bold transition-all placeholder:text-zinc-700" 
+              />
             </div>
             <div className="space-y-3">
               <label className="text-zinc-500 text-[10px] font-black uppercase tracking-widest ml-4">The Challenge</label>

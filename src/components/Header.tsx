@@ -40,7 +40,7 @@ export default function Header({ onOpenModal }: { onOpenModal: () => void }) {
             Home
           </Link>
           <Link 
-            href="#work" 
+            href="/about" 
             className="text-sm font-bold text-zinc-900 hover:text-[var(--color-accent)] transition-colors"
           >
             About

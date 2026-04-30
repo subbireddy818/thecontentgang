@@ -106,7 +106,7 @@ export default function TrackRecord() {
           <div className="hidden md:block h-px flex-1 bg-white/5 mx-12" />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((item, idx) => (
             <div 
               key={idx} 
@@ -134,9 +134,25 @@ export default function TrackRecord() {
                   </div>
                 </div>
               </div>
-              
-              {/* Subtle Bottom Accent */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              {/* Wavy Design Background */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 300 425" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <style>
+                  {`
+                    @keyframes waveA {
+                      0%,100% { d: path("M0,370 C55,345 110,392 165,370 C220,348 270,388 300,370 L300,425 L0,425 Z"); }
+                      50%      { d: path("M0,370 C55,392 110,348 165,373 C220,396 270,352 300,374 L300,425 L0,425 Z"); }
+                    }
+                    @keyframes waveB {
+                      0%,100% { d: path("M0,384 C60,362 115,402 175,382 C235,362 278,396 300,382 L300,425 L0,425 Z"); }
+                      50%      { d: path("M0,384 C60,404 115,364 175,387 C235,410 278,372 300,388 L300,425 L0,425 Z"); }
+                    }
+                    .wa { animation: waveA 4s ease-in-out infinite; }
+                    .wb { animation: waveB 5.2s ease-in-out infinite; }
+                  `}
+                </style>
+                <path className="wa" fill="rgba(255,59,31,0.09)" d="M0,370 C55,345 110,392 165,370 C220,348 270,388 300,370 L300,425 L0,425 Z"/>
+                <path className="wb" fill="rgba(255,59,31,0.05)" style={{animationDelay: `${idx * 0.4}s`}} d="M0,384 C60,362 115,402 175,382 C235,362 278,396 300,382 L300,425 L0,425 Z"/>
+              </svg>
             </div>
           ))}
         </div>

@@ -3,25 +3,25 @@ const services = [
     title: "Lead Generation & Ads",
     body: "ROI-first performance marketing across Meta, Google & more. We build high-converting pipelines that turn clicks into cash.",
     icon: "ads_click",
-    href: "/services/lead-gen"
+    href: "#contact"
   },
   {
     title: "Social Media Management",
     body: "Build brand visibility, trust, and engagement that drives action. Cinematic authority that turns followers into high-ticket clients.",
     icon: "campaign",
-    href: "/services/social-media"
+    href: "#contact"
   },
   {
     title: "Website Design & UI/UX",
     body: "High-converting websites that aren't just beautiful, but built to perform. Optimized for maximum lead capture.",
     icon: "devices",
-    href: "/services/website-design"
+    href: "#contact"
   },
   {
     title: "Google My Business (GMB)",
     body: "Drive more local leads and calls with a dominant GMB presence. We ensure you rank #1 for high-intent local search terms.",
     icon: "near_me",
-    href: "#services"
+    href: "#contact"
   }
 ];
 
@@ -58,7 +58,7 @@ export default function Services() {
                 href={s.href}
                 className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] group/link"
               >
-                Know More
+                Book Audit
                 <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
               </a>
             </div>

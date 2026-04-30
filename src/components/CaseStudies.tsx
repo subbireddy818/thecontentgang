@@ -20,7 +20,14 @@ const studies = [
     label: "Medical Practice Scaling",
     badge: "300% More Calls",
     description: "Optimized GMB and implemented local video ads for a dental clinic, resulting in a consistent flood of new patient appointments.",
-    thumbnail: "https://lh3.googleusercontent.com/aida-public/AB6AXuCHXUf0-z8lX3M4x6u7l5R5b8_v7v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9v9"
+    thumbnail: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "case-4",
+    label: "E-Commerce Scaling",
+    badge: "10X ROAS",
+    description: "Revamped the ad strategy and video creatives for a premium D2C brand, scaling their monthly revenue by 400% in 90 days.",
+    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
@@ -34,7 +41,7 @@ export default function CaseStudies() {
         >
           Recent Success Stories
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {studies.map((s) => (
             <div
               key={s.id}

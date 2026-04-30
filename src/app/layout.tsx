@@ -38,6 +38,7 @@ export const metadata: Metadata = {
 };
 
 import SplashCursor from "@/components/SplashCursor";
+import Preloader from "@/components/Preloader";
 
 export default function RootLayout({
   children,
@@ -54,6 +55,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Preloader />
         <SplashCursor />
         {children}
       </body>

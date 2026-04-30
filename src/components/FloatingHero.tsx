@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useSpring, useMotionValue } from "framer-motion";
+import Particles from "./Particles";
 
 // Platform Icon Component with repulsion logic
 const FloatingIcon = ({ logo, color, initialX, initialY }: { logo: string; color: string; initialX: number; initialY: number }) => {
@@ -94,8 +95,22 @@ export default function FloatingHero({ onOpenModal }: { onOpenModal: () => void 
   return (
     <section className="relative min-h-screen w-full bg-[#0B0B0B] overflow-hidden flex flex-col items-center justify-center px-6 pt-32">
       
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-0 pointer-events-auto">
+        <Particles
+          particleColors={["#ffffff", "#FF3B1F"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+
       {/* Background Floating Icons */}
-      <div className="absolute inset-0 z-0 overflow-hidden opacity-40">
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-40 pointer-events-none">
         {icons.map((icon) => (
           <div key={icon.id} className="absolute" style={{ left: icon.x, top: icon.y }}>
             <FloatingIcon logo={icon.logo} color={icon.color} initialX={0} initialY={0} />

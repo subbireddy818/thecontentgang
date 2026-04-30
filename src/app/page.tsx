@@ -12,6 +12,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 import FloatingHero from "@/components/FloatingHero";
+import InteractiveCTA from "@/components/InteractiveCTA";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +35,8 @@ export default function Home() {
       {/* Main Content Wrap with Z-Index for Footer Reveal */}
       <div className="relative z-20 bg-[#0B0B0B] shadow-[0_50px_100px_rgba(0,0,0,1)]">
         <main>
-          <Hero onOpenModal={openModal} />
+          {/* <Hero onOpenModal={openModal} /> */}
+          <InteractiveCTA onOpenModal={openModal} />
           <ProblemSolutionInteractive />
           <Services />
           <CaseStudies />
@@ -44,8 +46,8 @@ export default function Home() {
         </main>
       </div>
 
-      {/* Sticky Reveal Footer */}
-      <div className="sticky bottom-0 z-10">
+      {/* Sticky Reveal Footer (Relative on mobile to prevent clipping) */}
+      <div className="relative md:sticky bottom-0 z-10">
         <Footer onOpenModal={openModal} />
       </div>
       

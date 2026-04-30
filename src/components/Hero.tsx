@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Particles from "./Particles";
 
 export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
   return (
@@ -6,6 +7,20 @@ export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
       className="relative px-6 pt-48 pb-24 flex flex-col items-center text-center mx-auto bg-[#0B0B0B]" 
       style={{ maxWidth: "100%", width: "100%" }}
     >
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-auto">
+        <Particles
+          particleColors={["#ffffff", "#FF3B1F"]}
+          particleCount={600}
+          particleSpread={30}
+          speed={0.1}
+          particleBaseSize={150}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+
       {/* Subtle Radial Gradient for depth */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,59,31,0.05)_0%,transparent_70%)]" />
       

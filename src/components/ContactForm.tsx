@@ -175,10 +175,6 @@ export default function ContactForm() {
               {!isSubmitting && <span className="material-symbols-outlined text-2xl">arrow_forward</span>}
             </button>
 
-            <p className="text-center text-[9px] font-bold text-zinc-600 pt-4 flex items-center justify-center gap-2 uppercase tracking-widest">
-              <span className="material-symbols-outlined text-sm">shield</span>
-              Your data is secured by enterprise-grade encryption
-            </p>
           </form>
         )}
       </div>
