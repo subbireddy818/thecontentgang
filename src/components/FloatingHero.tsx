@@ -48,13 +48,13 @@ const FloatingIcon = ({ logo, color, initialX, initialY }: { logo: string; color
   return (
     <motion.div
       style={{ x, y, left: driftX, top: driftY }}
-      className="absolute p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl flex items-center justify-center pointer-events-none z-0 group"
+      className="absolute p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/10 md:bg-white/5 backdrop-blur-md border border-white/20 md:border-white/10 shadow-2xl flex items-center justify-center pointer-events-none z-0 group"
     >
       <img 
         src={logo} 
         alt="Platform" 
-        className="w-6 h-6 object-contain filter grayscale brightness-200 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-300" 
-        style={{ filter: `drop-shadow(0 0 8px ${color}) brightness(1.5)` }}
+        className="w-5 h-5 md:w-6 md:h-6 object-contain transition-all duration-300" 
+        style={{ filter: `drop-shadow(0 0 12px ${color})` }}
       />
     </motion.div>
   );
@@ -110,7 +110,7 @@ export default function FloatingHero({ onOpenModal }: { onOpenModal: () => void 
       </div>
 
       {/* Background Floating Icons */}
-      <div className="absolute inset-0 z-0 overflow-hidden opacity-40 pointer-events-none">
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-80 md:opacity-40 pointer-events-none">
         {icons.map((icon) => (
           <div key={icon.id} className="absolute" style={{ left: icon.x, top: icon.y }}>
             <FloatingIcon logo={icon.logo} color={icon.color} initialX={0} initialY={0} />

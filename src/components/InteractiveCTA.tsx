@@ -36,10 +36,10 @@ const FloatingIcon = ({
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay, duration: 0.8, type: "spring" }}
       viewport={{ once: true }}
-      className="absolute flex items-center justify-center rounded-2xl bg-[#111111] border border-white/10 shadow-2xl"
+      className="absolute flex items-center justify-center rounded-[10px] md:rounded-2xl bg-[#111111] border border-white/10 shadow-2xl w-[var(--mobile-size)] h-[var(--mobile-size)] md:w-[var(--desktop-size)] md:h-[var(--desktop-size)]"
       style={{
-        width: size,
-        height: size,
+        '--desktop-size': `${size}px`,
+        '--mobile-size': `${size * 0.65}px`,
         filter: blur ? `blur(${blur}px)` : 'none',
         left: x,
         top: y,
@@ -106,7 +106,7 @@ export default function InteractiveCTA({ onOpenModal }: { onOpenModal?: () => vo
       />
 
       {/* Floating Icons */}
-      <div className="absolute inset-0 z-10 pointer-events-none hidden md:block">
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-60 md:opacity-100">
         {icons.map((icon, idx) => (
           <FloatingIcon
             key={idx}
@@ -119,12 +119,12 @@ export default function InteractiveCTA({ onOpenModal }: { onOpenModal?: () => vo
 
       {/* Content */}
       <div className="relative z-20 text-center max-w-3xl mx-auto flex flex-col items-center px-4">
-        <h2 
+        <h1 
           className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-[1.1] tracking-tight"
           style={{ fontFamily: "var(--font-epilogue)" }}
         >
           Build An Audience That <br className="hidden md:block" /><span className="text-[var(--color-accent)]">Actually Converts.</span>
-        </h2>
+        </h1>
         
         <p className="text-zinc-400 text-base md:text-lg lg:text-xl mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
           Stop blending in. We engineer cinematic content ecosystems designed to scale your brand, command attention, and dominate your industry.

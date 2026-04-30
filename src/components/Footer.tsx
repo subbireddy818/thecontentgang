@@ -157,18 +157,7 @@ export default function Footer({ onOpenModal }: { onOpenModal: () => void }) {
           </svg>
         </a>
 
-        {/* ── Mobile sticky CTA ──────────────────────────────── */}
-        <div className="md:hidden fixed bottom-0 left-0 w-full z-[55] p-4 bg-zinc-950/90 backdrop-blur-xl border-t border-white/10">
-          <button
-            onClick={onOpenModal}
-            className="bg-[var(--color-accent)] w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold uppercase tracking-widest cursor-pointer text-white shadow-2xl active:scale-95 transition-transform"
-          >
-            <span className="material-symbols-outlined text-sm" aria-hidden="true">
-              calendar_today
-            </span>
-            BOOK AUDIT NOW
-          </button>
-        </div>
+
       </footer>
     </>
   );

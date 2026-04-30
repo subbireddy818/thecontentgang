@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 const studies = [
   {
@@ -32,6 +35,12 @@ const studies = [
 ];
 
 export default function CaseStudies() {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const toggleExpand = (id: string) => {
+    setExpandedId(prev => (prev === id ? null : id));
+  };
+
   return (
     <section className="py-24 bg-[#0B0B0B]" id="work">
       <div className="px-6 mx-auto" style={{ maxWidth: "1280px" }}>
@@ -42,37 +51,49 @@ export default function CaseStudies() {
           Recent Success Stories
         </h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {studies.map((s) => (
-            <div
-              key={s.id}
-              className="bg-white/5 border border-white/10 rounded-xl overflow-hidden group cursor-pointer hover:border-[#FF3B1F] transition-colors duration-300"
-            >
-              <div className="relative aspect-video bg-zinc-800">
-                <Image
-                  src={s.thumbnail}
-                  alt={s.label}
-                  fill
-                  className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                />
-              </div>
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-4">
-                  <h4
-                    className="text-2xl font-bold text-white"
-                    style={{ fontFamily: "var(--font-epilogue)" }}
-                  >
-                    {s.label}
-                  </h4>
-                  <span className="bg-[#FF3B1F] text-white text-[10px] font-bold px-2 py-1 rounded">
-                    {s.badge}
-                  </span>
+          {studies.map((s) => {
+            const isExpanded = expandedId === s.id;
+            return (
+              <div
+                key={s.id}
+                onClick={() => toggleExpand(s.id)}
+                className="bg-white/5 border border-white/10 rounded-xl overflow-hidden group cursor-pointer hover:border-[#FF3B1F] transition-colors duration-300 flex flex-col h-full"
+              >
+                <div className="relative aspect-[4/3] md:aspect-video bg-zinc-800 overflow-hidden shrink-0">
+                  <Image
+                    src={s.thumbnail}
+                    alt={s.label}
+                    fill
+                    className="object-cover opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                  />
                 </div>
-                <p className="text-zinc-400 text-sm leading-relaxed">
-                  {s.description}
-                </p>
+                <div className="p-4 md:p-8 flex flex-col flex-1">
+                  <div className="flex flex-col xl:flex-row justify-between items-start mb-3 md:mb-4 gap-2 xl:gap-0">
+                    <h4
+                      className="text-base md:text-2xl font-bold text-white leading-tight"
+                      style={{ fontFamily: "var(--font-epilogue)" }}
+                    >
+                      {s.label}
+                    </h4>
+                    <span className="bg-[#FF3B1F] text-white text-[9px] md:text-[10px] font-bold px-2 py-1 rounded shrink-0">
+                      {s.badge}
+                    </span>
+                  </div>
+                  <p className={`text-zinc-400 text-xs md:text-sm leading-relaxed mb-4 transition-all duration-300 ${isExpanded ? '' : 'line-clamp-2'}`}>
+                    {s.description}
+                  </p>
+                  <div className="mt-auto pt-2">
+                    <span className="inline-flex items-center gap-1 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] group-hover:text-white transition-colors">
+                      {isExpanded ? "Show Less" : "View More"}
+                      <span className={`material-symbols-outlined text-sm transition-transform ${isExpanded ? '-rotate-90' : 'group-hover:translate-x-1'}`}>
+                        {isExpanded ? 'expand_less' : 'arrow_forward'}
+                      </span>
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

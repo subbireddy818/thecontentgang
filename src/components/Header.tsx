@@ -6,6 +6,7 @@ import Link from "next/link";
 // Floating pill-shaped navbar with WHITE background and high-contrast design
 export default function Header({ onOpenModal }: { onOpenModal: () => void }) {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Auto-open dropdown after 5 seconds to catch attention
   useEffect(() => {
@@ -82,16 +83,54 @@ export default function Header({ onOpenModal }: { onOpenModal: () => void }) {
           </div>
         </div>
 
-        {/* CTA - Right */}
-        <div className="shrink-0 ml-4 md:ml-0">
+        {/* CTA & Mobile Menu - Right */}
+        <div className="shrink-0 ml-auto flex items-center gap-4">
           <Link
             href="#contact"
-            className="bg-[var(--color-accent)] text-white px-5 md:px-7 py-2.5 rounded-full font-bold text-xs md:text-sm shadow-[0_4px_20px_-5px_rgba(255,59,31,0.4)] hover:brightness-110 transition-all active:scale-95 cursor-pointer block"
+            className="hidden md:block bg-[var(--color-accent)] text-white px-5 md:px-7 py-2.5 rounded-full font-bold text-xs md:text-sm shadow-[0_4px_20px_-5px_rgba(255,59,31,0.4)] hover:brightness-110 transition-all active:scale-95 cursor-pointer"
           >
             Get Started
           </Link>
+          
+          <button 
+            className="md:hidden flex items-center justify-center w-10 h-10 text-zinc-900"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <span className="material-symbols-outlined text-[36px]">{isMobileMenuOpen ? "close" : "menu"}</span>
+          </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-[calc(100%+16px)] left-0 w-full bg-white border border-zinc-200 shadow-2xl rounded-[32px] p-8 md:hidden animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="flex flex-col gap-6">
+            <Link href="/" className="text-xl font-black text-zinc-900 hover:text-[var(--color-accent)] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+            <Link href="/about" className="text-xl font-black text-zinc-900 hover:text-[var(--color-accent)] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+            
+            <div className="pt-4 border-t border-zinc-100">
+              <div className="text-sm font-black text-zinc-400 uppercase tracking-widest mb-4">Services</div>
+              <div className="flex flex-col gap-4">
+                {[
+                  { name: "Lead Generation & Ads", href: "/services/lead-gen" },
+                  { name: "Social Media Management", href: "/services/social-media" },
+                  { name: "Website Design & UI/UX", href: "/services/website-design" },
+                  { name: "Google My Business (GMB)", href: "#services" }
+                ].map((service) => (
+                  <Link 
+                    key={service.name} 
+                    href={service.href} 
+                    className="text-lg font-bold text-zinc-700 hover:text-[var(--color-accent)] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

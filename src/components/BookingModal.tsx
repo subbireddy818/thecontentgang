@@ -76,7 +76,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         </button>
 
         {/* Left Side - Authority Branding */}
-        <div className="w-full md:w-[45%] relative p-6 md:p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 bg-gradient-to-br from-[#111] to-[#0B0B0B]">
+        <div className="hidden md:flex w-full md:w-[45%] relative p-6 md:p-10 flex-col justify-between border-r border-white/5 bg-gradient-to-br from-[#111] to-[#0B0B0B]">
           
           <div className="absolute inset-0 z-0">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(255,59,31,0.15),transparent_50%)]" />
@@ -205,10 +205,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </div>
                 </div>
                 
-                <p className="text-center text-[10px] font-bold text-zinc-600 flex items-center justify-center gap-1.5 pt-2">
-                  <span className="material-symbols-outlined text-[14px]">lock</span>
-                  100% Secure & Private.
-                </p>
+
               </form>
             </>
           )}

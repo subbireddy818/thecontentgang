@@ -56,9 +56,9 @@ export default function Services() {
               
               <a 
                 href={s.href}
-                className="hidden md:inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] group/link"
+                className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] group/link mt-auto"
               >
-                Book Audit
+                Know More
                 <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
               </a>
             </div>
