@@ -46,7 +46,7 @@ const FloatingIcon = ({
         x: xOffset,
         y: yOffset,
         zIndex: blur ? 10 : 20,
-      }}
+      } as any}
     >
       <img src={logo} alt="Platform Icon" className="w-1/2 h-1/2 object-contain" />
     </motion.div>
